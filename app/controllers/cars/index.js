@@ -27,7 +27,7 @@ export default class CarsController extends Controller {
     // var self = this;
 
     //Find and update record
-    this.store.findRecord('car', id, {reload: true}).then(function(car){
+    this.store.findRecord('car', id, {backgroundReload: false}).then(function(car){
       car.deleteRecord();
 
       //save updates
