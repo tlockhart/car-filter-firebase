@@ -1,0 +1,16 @@
+{{!-- {{#link-to @route='cars'}}Go To Car{{/link-to}} --}}
+
+{{!-- Get the params.make from the model hook; --}}
+<div class ="container">
+  <h1> Cars Found {{model.params.car_make}}</h1>
+  <div class ="car-info">
+    <ul>
+          <li>Car Make: {{model.make}}</li>
+          <li>Car Model: {{model.model}}</li>
+          <li>Car Year: {{model.year}}</li>
+    </ul>
+  </div>
+</div>
+
+
+{{!-- {{/each}} --}}

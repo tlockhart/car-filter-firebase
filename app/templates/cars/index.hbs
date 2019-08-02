@@ -1,0 +1,15 @@
+{{!-- <LinkTo @route='cars.new'>Create Car</LinkTo> --}}
+<hr>
+{{!-- {{log "filteredCars HBS" this.filteredCars}} --}}
+{{!-- <LinkTo @route='car'>Go To Car</LinkTo> --}}
+<FilteredCarsList @matchCars={{this.carMakeMatches}}
+                  @nonMatchCars = {{this.carMakeNonMatches}}
+                  @selectMake = {{action this.selectMake}}
+                  @selectedMake={{this.selectedMake}}
+                  @setDisplayMessage={{action this.setDisplayMessage}}
+                  @isMakeFound={{this.isMakeFound}}
+                  @routeCarsToFilter={{action this.routeCarsToFilter}}
+                  @carMakeNonMatches={{this.carMakeNonMatches}}
+                  @deleteCar= {{action this.deleteCar}}
+                  />
+{{outlet}}

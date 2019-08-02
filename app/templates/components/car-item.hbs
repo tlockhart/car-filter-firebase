@@ -1,0 +1,20 @@
+<div class="car-item">
+  <h4 class="car-item-header">Car Item</h4>
+    <ul>
+        <li>Car Make: {{@car.make}}
+          {{#if @showFoundMessage}}
+            {{#if this.shouldDisplay}}
+              <span>Found</span>
+            {{/if}}
+          {{/if}}
+          </li>
+        <li>Car Model: {{@car.model}}</li>
+        <li>Car Year: {{@car.year}}</li>
+  </ul>
+  <ul class="horizontal">
+    <li>{{link-to 'Edit' 'cars.edit' @car.id}}</li>
+    <li>{{link-to 'Info' 'cars.car' @car.make}}</li>
+    {{!-- Delete is in the index.js controller --}}
+    <li><button onclick={{action @deleteCar @car.id}}>Delete</button></li>
+  </ul>
+</div>

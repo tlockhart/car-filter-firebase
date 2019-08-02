@@ -1,0 +1,38 @@
+<h3>Filtered Car:</h3>
+
+{{#each @matchCars as |car|}}
+  {{!-- {{log "should message display is"}}
+  {{log @isMakeFound}} --}}
+  <CarItem @car={{car}}
+          @selectedMake={{@selectedMake}}
+          @setDisplayMessage={{@setDisplayMessage}}
+          @isMakeFound={{@isMakeFound}}
+          @carMakeNonMatches={{@carMakeNonMatches}}
+          @showFoundMessage={{true}}
+          @deleteCar={{action @deleteCar}}
+          /><br>
+{{/each}}
+
+<div class="filtered-cars-list">
+  <div class="filtered-cars-list-body">
+    <label>Car Filter</label>
+    <Input  @value={{this.filteredText}}
+            />
+    <button onclick={{action @selectMake this.filteredText
+                             @routeCarsToFilter}}>Submit</button>
+    <span>{{@selectedMake}}</span>
+  </div><!-- filtered-cars-list-body-->
+</div> <br>
+{{#each @nonMatchCars as |car|}}
+  {{!-- {{log "should message display is"}}
+  {{log @isMakeFound}} --}}
+  <CarItem @car={{car}}
+          @selectedMake={{@selectedMake}}
+          @setDisplayMessage={{@setDisplayMessage}}
+          @isMakeFound={{@isMakeFound}}
+          @carMakeNonMatches={{@carMakeNonMatches}}
+          @deleteCar={{action @deleteCar}}
+          /><br>
+{{/each}}
+
+

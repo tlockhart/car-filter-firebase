@@ -1,0 +1,19 @@
+.car-item{
+  border: 2px solid red;
+}
+.car-item-header{
+  border: 1px solid red;
+  /* display:inline-block; */
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+.filtered-cars-list{
+  border: 2px solid blue;
+}
+.filtered-cars-list-body{
+  padding: 10px;
+}
+.horizontal li{
+  display: inline;
+}

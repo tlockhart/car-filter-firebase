@@ -1,0 +1,15 @@
+{{!-- {{outlet}} --}}
+<form {{action this.addCar on='submit'}}>
+  <p>
+    Make: {{input type='text' value=this.carMake}}
+  </p>
+  <p>
+    Model: {{input type='text' value=carModel}}
+  </p>
+  <p>
+    Year: {{input type='text' value=carYear}}
+  </p>
+  <p>
+    {{input type='submit' value='Submit'}}
+  </p>
+</form>

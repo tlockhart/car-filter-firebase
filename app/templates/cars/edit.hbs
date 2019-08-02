@@ -1,0 +1,14 @@
+<form {{action this.editCar this.model.id on='submit'}}>
+  <p>
+    Make: {{input type='text' value=model.make}}
+  </p>
+  <p>
+    Model: {{input type='text' value=model.model}}
+  </p>
+  <p>
+    Year: {{input type='text' value=model.year}}
+  </p>
+  <p>
+    {{input type='submit' value='Submit'}}
+  </p>
+</form>

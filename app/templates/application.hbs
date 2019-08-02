@@ -1,0 +1,14 @@
+{{!-- The following component displays Ember's default welcome message. --}}
+{{!-- <WelcomePage /> --}}
+{{!-- Feel free to remove this! --}}
+<h2 id="title">
+  {{!-- <a href="/cars">My Cars</a> --}}
+</h2>
+<div class="navbar">
+  <LinkTo @route='cars'>Go To Cars</LinkTo>
+  <LinkTo @route='cars.new'>Create Car</LinkTo>
+  {{!-- <LinkTo @route='cars.car'>Go To Car</LinkTo> --}}
+  {{!-- <LinkTo @route='cars.car'>Go To Car</LinkTo> --}}
+  {{!-- <LinkTo @route={{car}}>Go To Car</LinkTo> --}}
+</div>
+{{outlet}}
