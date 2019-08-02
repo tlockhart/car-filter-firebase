@@ -24,7 +24,7 @@ export default class CarsController extends Controller {
   //called in car-item.hbs
     @action async deleteCar(id) {
       // event.preventDefault();
-    var self = this;
+    // var self = this;
 
     //Find and update record
     this.store.findRecord('car', id, {reload: true}).then(function(car){
@@ -57,7 +57,7 @@ export default class CarsController extends Controller {
         return filteredCar;
       }
     });
-    console.log("MAKE is", make);
+    // console.log("MAKE is", make);
 
     if (this.carMakeMatches.length > 0) {
       this.isMakeFound = true;
