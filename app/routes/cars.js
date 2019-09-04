@@ -4,51 +4,51 @@ export default class CarsRoute extends Route {
 
   async model() {
 
+    // Step1: Declare Variables
+    let allCars;
+    let newCars;
+    let userRecord1;
+    let userRecord2;
 
-    let userRecord1 = await this.store.createRecord('user', {
-      name: 'Tony',
-    });
+    // Step2: Instantiate Objects
+    try {
+      userRecord1 = await this.store.createRecord('user', {
+        name: 'Tony',
+      });
+      userRecord2 = await this.store.createRecord('user', {
+        name: 'Jada',
+      });
+    } catch (error) {
+      console.log("Error:", error);
+    }
 
-    let userRecord2 = await this.store.createRecord('user', {
-      name: 'Jada',
-    });
-
-    userRecord1.save();
-    userRecord2.save();
-
-    // Load all results into the store
-    let allCars = await this.store.findAll('car');
+    // Step3: Load Models from Store
+    allCars = await this.store.findAll('car');
     allCars.set('users', [userRecord1, userRecord2]);
-
     console.log("AllCar", allCars.users[0].name);
     console.log("AllCar", allCars.users[1].name);
 
+    // Step4 A: Add users to each car
+    let beginFilter = () => {
+      // ADD Users property
+      allCars.map(carRecord => {
+        carRecord.set('users', [userRecord1, userRecord2]);
+      });
+    };
 
-  // ADD Users property
-  allCars.map(async carRecord => {
-    carRecord.set('users', [userRecord1, userRecord2]);
-    await carRecord.save();
-  });
-  await allCars.save();
+    // Step4 B: Execute Filter
+    beginFilter();
 
-    // Filter Results
-    let newCars = allCars.filter((car) => {
+    // Step5: Filter Car Results
+    newCars = allCars.filter((car) => {
       if (car.make === 'Ford') {
-        console.log('car User Name:', car.users[0]);
+        let users = car.users;
+        console.log("Make:", car.make + ", Model:", car.model + ", Year:", car.year);
+        console.log('car User Name:', users[0].name);
+        console.log('car User Name:', users[1].name);
         return car;
       } // if
-  });
-  return newCars;
-
-    // Return Multiple Records: Doesn't Work
-    // let filterCars = await this.store.query('car', {
-    //   filter: {
-    //     make: 'Ford'
-    //   }
-    // }).then(function(fords) {
-    //   console.log("Cars", fords);
-    // });
-    // return filterCars;
-
+    }); // allCars
+    return newCars;
   } // model
-}
+} // class

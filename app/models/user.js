@@ -5,6 +5,6 @@ const { attr, Model } = DS;
 //   @attr('string') name;
 export default DS.Model.extend({
   name: DS.attr(),
-  car: DS.belongsTo('car')
+  // car: DS.belongsTo('car')
 });
 // }

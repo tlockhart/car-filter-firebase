@@ -14,5 +14,5 @@ export default DS.Model.extend({
   make: DS.attr(),
   model: DS.attr(),
   year: DS.attr(),
-  users: DS.hasMany('user'),
+  // users: DS.hasMany('user'),
 });
