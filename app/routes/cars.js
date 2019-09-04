@@ -1,24 +1,54 @@
 import Route from '@ember/routing/route';
-// import RealtimeRouteMixin from 'emberfire/mixins/realtime-route';
-// import Ember from 'ember';
-// import $ from 'jquery';
-
-// export default class CarsRoute extends Route.extend(RealtimeRouteMixin) {
-// export default class CarsRoute extends Route {
-//     model() {
-//      return this.store.findAll('car');
-//     } // model
-// }
-// export default Route.extend(RealtimeRouteMixin, {
-
-//   model: function() {
-//     return this.store.findAll('car');
-//   } // model
-// });
 
 export default class CarsRoute extends Route {
 
-  model() {
-    return this.store.findAll('car');
+  async model() {
+
+
+    let userRecord1 = await this.store.createRecord('user', {
+      name: 'Tony',
+    });
+
+    let userRecord2 = await this.store.createRecord('user', {
+      name: 'Jada',
+    });
+
+    userRecord1.save();
+    userRecord2.save();
+
+    // Load all results into the store
+    let allCars = await this.store.findAll('car');
+    allCars.set('users', [userRecord1, userRecord2]);
+
+    console.log("AllCar", allCars.users[0].name);
+    console.log("AllCar", allCars.users[1].name);
+
+
+  // ADD Users property
+  allCars.map(async carRecord => {
+    carRecord.set('users', [userRecord1, userRecord2]);
+    await carRecord.save();
+  });
+  await allCars.save();
+
+    // Filter Results
+    let newCars = allCars.filter((car) => {
+      if (car.make === 'Ford') {
+        console.log('car User Name:', car.users[0]);
+        return car;
+      } // if
+  });
+  return newCars;
+
+    // Return Multiple Records: Doesn't Work
+    // let filterCars = await this.store.query('car', {
+    //   filter: {
+    //     make: 'Ford'
+    //   }
+    // }).then(function(fords) {
+    //   console.log("Cars", fords);
+    // });
+    // return filterCars;
+
   } // model
 }
